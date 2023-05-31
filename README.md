@@ -3,8 +3,11 @@
 
 ## Comentários pessoais
 Foram criados testes para os casos de matriz vazia, matriz com tamanho pequeno e um teste com uma matriz de tamanho 10000x10000.
+
 Para matrizes de tamanho inferior ou igual a 25, o código executa o algoritmo apenas com uma thread que percorre a matriz de acordo com o enunciado.
 Para matrizes maiores, cria duas threads, uma que igual à referida em cima (mas apenas procura metade da matriz) e e outra que começa do centro e percorre o caminho inverso (procura a outra metade da matriz), no final os dois arrays são combinados. Esta solução tem o propósito de otimizar o tempo para matrizes de maior tamanho e, visto que duas threads poderia prejudicar o runtime para matrizes pequenas, para estas, apenas uma thread é usada.
+
+No código usou-se polimorfismo, herança e o padrão Factory.
 
 
 ## O problema
