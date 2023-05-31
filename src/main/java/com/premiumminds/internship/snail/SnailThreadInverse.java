@@ -45,7 +45,6 @@ public class SnailThreadInverse extends Thread {
 	}
 	
 	private void ifImpar(int middleRow) {
-		this.nToCollect++;
 		int counter = nToCollect - 2;
 		int linesToMove = 2;
 		

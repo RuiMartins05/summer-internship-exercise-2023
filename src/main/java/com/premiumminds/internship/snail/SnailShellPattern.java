@@ -26,13 +26,16 @@ class SnailShellPattern implements ISnailShellPattern {
 		CompletableFuture<int[]> futureResult = new CompletableFuture<>();
 
 		SnailThread snt = new SnailThread(matrix, halfElemns);
-		SnailThreadInverse sntInverse = new SnailThreadInverse(matrix, halfElemns);
+		SnailInverseOperation sntInverse =  SnailInverseFactory.getInstance(matrix, halfElemns);
+		
 		snt.start();
-		sntInverse.start();
+		
+		Thread threadInverse = new Thread(sntInverse);
+		threadInverse.start();
 
 		try {
 			snt.join();
-			sntInverse.join();
+			threadInverse.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -44,9 +47,6 @@ class SnailShellPattern implements ISnailShellPattern {
 		int[] combinedArray = new int[firstHalf.length + secondHalf.length];
 		System.arraycopy(firstHalf, 0, combinedArray, 0, firstHalf.length);
 		System.arraycopy(secondHalf, 0, combinedArray, firstHalf.length, secondHalf.length);
-		
-		for (int n: combinedArray) 
-			System.out.println(n);
 
 		futureResult.complete(combinedArray);
 		return futureResult;
