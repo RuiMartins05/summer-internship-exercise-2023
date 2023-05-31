@@ -1,7 +1,6 @@
 package com.premiumminds.internship.snail;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SnailThread extends Thread {
 
@@ -17,7 +16,6 @@ public class SnailThread extends Thread {
 
 	@Override
 	public void run() {
-
 		int lines = matrix.length;
 		if (lines == 0) {
 			return;
@@ -49,7 +47,7 @@ public class SnailThread extends Thread {
 			}
 			rightColumn--;
 
-			for (i = rightColumn; i >= 0 && counter < nToCollect; i--) {
+			for (i = rightColumn; i >= leftColumn && counter < nToCollect; i--) {
 				this.result[counter] = matrix[bottomRow][i];
 				counter++;
 			}
@@ -62,7 +60,6 @@ public class SnailThread extends Thread {
 			leftColumn++;
 
 		}
-		System.out.println("resultado " + this.result);
 	}
 
 	public int[] getResult() {

@@ -4,9 +4,13 @@ public class SnailInverseFactory {
 
 	private static SnailInverseFactory INSTANCE;
 	
-	private SnailInverseFactory() {
-	}
+	private SnailInverseFactory() {}
 	
+	 /**
+     * Retrieves the singleton instance of SnailInverseFactory.
+     *
+     * @return the singleton instance of SnailInverseFactory
+     */
 	public SnailInverseFactory getInstance() {
 		
 		if (INSTANCE == null)
@@ -16,6 +20,13 @@ public class SnailInverseFactory {
 		
 	}
 	
+	/**
+     * Creates an instance of SnailInverseOperation based on the given matrix dimensions and number of elements to collect.
+     *
+     * @param matrix     the matrix to operate on
+     * @param nToCollect the number of elements to collect from the snail shell
+     * @return an instance of SnailInverseOperation
+     */
 	public static SnailInverseOperation getInstance(int[][] matrix, int nToCollect) {
 		
 		if (isPar(matrix.length)) {
@@ -26,6 +37,12 @@ public class SnailInverseFactory {
 		
 	}
 	
+    /**
+     * Checks if a number is even.
+     *
+     * @param n the number to check
+     * @return true if the number is even, false otherwise
+     */
 	private static boolean isPar(int n) {
 		return n % 2 == 0;
 	}
